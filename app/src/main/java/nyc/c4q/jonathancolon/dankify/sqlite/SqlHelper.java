@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import nl.qbusict.cupboard.QueryResultIterable;
-import nyc.c4q.jonathancolon.inContaq.contactlist.Contact;
+import nyc.c4q.jonathancolon.dankify.Meme;
 
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
@@ -18,23 +18,23 @@ public class SqlHelper {
     public SqlHelper() {
     }
 
-    public static List<Contact> selectAllContacts(SQLiteDatabase db) {
-        List<Contact> contacts = new ArrayList<>();
+    public static List<Meme> selectAllContacts(SQLiteDatabase db) {
+        List<Meme> memes = new ArrayList<>();
         try {
-            QueryResultIterable<Contact> itr = cupboard().withDatabase(db).query(Contact.class).query();
-            for (Contact contact : itr) {
-                contacts.add(contact);
+            QueryResultIterable<Meme> itr = cupboard().withDatabase(db).query(Meme.class).query();
+            for (Meme meme : itr) {
+                memes.add(meme);
             }
             itr.close();
         } catch (Exception e) {
-            Log.e("Contact List", "selectAllContacts: ", e);
+            Log.e("Meme List", "selectAllContacts: ", e);
         }
-        return contacts;
+        return memes;
     }
 
-    public static Contact getRandomContact(SQLiteDatabase db) {
+    public static Meme getRandomContact(SQLiteDatabase db) {
         Random rand = new Random();
-        Contact contact = cupboard().withDatabase(db).get(Contact.class, rand.nextInt(20));
-        return contact;
+        Meme meme = cupboard().withDatabase(db).get(Meme.class, rand.nextInt(20));
+        return meme;
     }
 }
