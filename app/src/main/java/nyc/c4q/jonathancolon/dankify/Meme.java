@@ -8,8 +8,10 @@ public class Meme {
     Long _id;
     public String topText;
     public String bottomText;
-    byte[] memeImage;
     String dateCreated;
+    byte[] memeImage;
+
+    int memeType;
 
     public String getTopText() {
         return topText;
@@ -41,5 +43,13 @@ public class Meme {
 
     public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public int getMemeType() {
+        return memeType;
+    }
+
+    public void setMemeType(int memeType) {
+        this.memeType = memeType;
     }
 }
