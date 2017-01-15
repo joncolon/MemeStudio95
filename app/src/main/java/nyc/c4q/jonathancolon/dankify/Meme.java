@@ -9,7 +9,7 @@ public class Meme {
     public String topText;
     public String bottomText;
     String dateCreated;
-    byte[] memeImage;
+    String memeImage;
 
     int memeType;
 
@@ -29,11 +29,11 @@ public class Meme {
         this.bottomText = bottomText;
     }
 
-    public byte[] getMemeImage() {
+    public String getMemeImage() {
         return memeImage;
     }
 
-    public void setMemeImage(byte[] memeImage) {
+    public void setMemeImage(String memeImage) {
         this.memeImage = memeImage;
     }
 
