@@ -5,8 +5,51 @@ package nyc.c4q.jonathancolon.dankify;
  */
 
 public class Meme {
+    Long _id;
     public String topText;
     public String bottomText;
-    byte[] memeImage;
     String dateCreated;
+    String memeImage;
+
+    int memeType;
+
+    public String getTopText() {
+        return topText;
+    }
+
+    public void setTopText(String topText) {
+        this.topText = topText;
+    }
+
+    public String getBottomText() {
+        return bottomText;
+    }
+
+    public void setBottomText(String bottomText) {
+        this.bottomText = bottomText;
+    }
+
+    public String getMemeImage() {
+        return memeImage;
+    }
+
+    public void setMemeImage(String memeImage) {
+        this.memeImage = memeImage;
+    }
+
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public int getMemeType() {
+        return memeType;
+    }
+
+    public void setMemeType(int memeType) {
+        this.memeType = memeType;
+    }
 }
