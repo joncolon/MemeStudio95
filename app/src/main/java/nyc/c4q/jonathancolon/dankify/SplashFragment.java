@@ -32,7 +32,13 @@ public class SplashFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         mRoot = inflater.inflate(R.layout.fragment_main, parent, false);
         clickMemeButton();
+        playBootUpTheme();
         return mRoot;
+    }
+
+    private void playBootUpTheme() {
+        player = MediaPlayer.create(getActivity(), R.raw.windows95_startup);
+        player.start();
     }
 
     public void startMemeStudio() {
@@ -45,8 +51,7 @@ public class SplashFragment extends Fragment {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player = MediaPlayer.create(getActivity(), R.raw.windows95_startup);
-                player.start();
+
                 startMemeStudio();
             }
         });
