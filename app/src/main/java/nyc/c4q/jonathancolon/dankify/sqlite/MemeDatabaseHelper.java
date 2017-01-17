@@ -21,7 +21,7 @@ public class MemeDatabaseHelper extends SQLiteOpenHelper {
         return instance;
     }
 
-    public MemeDatabaseHelper(Context context) {
+    private MemeDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

@@ -21,4 +21,9 @@ public class PicassoHelper {
         Picasso.with(context).load(Uri.parse(uriString)).into(imageView);
     }
 
+    public void resizeForTwitter(Uri uri, ImageView imageView){
+        Picasso.with(context).load(uri).resize(100, 100).centerCrop().into(imageView);
+
+    }
+
 }
