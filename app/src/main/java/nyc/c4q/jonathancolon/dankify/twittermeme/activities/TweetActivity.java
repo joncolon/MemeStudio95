@@ -3,11 +3,14 @@ package nyc.c4q.jonathancolon.dankify.twittermeme.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,8 +24,9 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
 
     private static final String TAG = "listener";
     private static final int RESULT_LOAD_PROFILE_PIC = 1;
+    private static final int RESULT_LOAD_ADD_PHOTO = 2;
     private TextView twitterHandleTV, nameTV, tweetTV, timeStampTV, likeValueTV, retweetValueTV;
-    private ImageView editTweetIV, profilePic;
+    private ImageView editTweetIV, profilePicIV, saveBitmapIV, addPhotoIV, tweetPicIV;
     private RelativeLayout tweetLayout;
     private EditTweetFragment fragment;
 
@@ -44,13 +48,26 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
         likeValueTV = (TextView) findViewById(R.id.likes_value_tv);
         retweetValueTV = (TextView) findViewById(R.id.retweet_value_tv);
         editTweetIV = (ImageView) findViewById(R.id.edit_button_iv);
-        profilePic = (ImageView) findViewById(R.id.profile_pic_iv);
+        profilePicIV = (ImageView) findViewById(R.id.profile_pic_iv);
+        saveBitmapIV = (ImageView) findViewById(R.id.save_to_gallery_iv);
+        tweetLayout = (RelativeLayout) findViewById(R.id.twitter_meme_rlayout);
+        tweetPicIV = (ImageView) findViewById(R.id.tweet_pic_iv);
+        addPhotoIV = (ImageView) findViewById(R.id.add_photo_iv);
     }
 
     private void setOnClickListeners() {
         editTweetIV.setOnClickListener(v -> showEditDialog());
+        saveBitmapIV.setOnClickListener(v -> saveBitmap(viewToBitmap(tweetLayout)));
+        addPhotoIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-        profilePic.setOnClickListener(v -> {
+                startActivityForResult(galleryIntent, RESULT_LOAD_ADD_PHOTO);
+            }
+        });
+        profilePicIV.setOnClickListener(v -> {
             Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                     android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
@@ -93,7 +110,12 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
                 if (requestCode == RESULT_LOAD_PROFILE_PIC) {
                     PicassoHelper ph = new PicassoHelper(this);
                     Uri uri = data.getData();
-                    ph.resizeForTwitter(uri, profilePic);
+                    ph.loadTwitterProfileImg(uri, profilePicIV);
+                }
+                if (requestCode == RESULT_LOAD_ADD_PHOTO) {
+                    PicassoHelper ph = new PicassoHelper(this);
+                    Uri uri = data.getData();
+                    ph.loadTweetBodyImg(uri, tweetPicIV);
                 }
             } else {
                 Toast.makeText(this, "No photo selected",
@@ -104,5 +126,15 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
+    }
+
+    public Bitmap viewToBitmap(View view) {
+        view.setDrawingCacheEnabled(true);
+        Bitmap bitmap = view.getDrawingCache();
+        return bitmap;
+    }
+
+    public void saveBitmap(Bitmap bitmap){
+        MediaStore.Images.Media.insertImage(this.getContentResolver(), bitmap, "image1", "an image");
     }
 }

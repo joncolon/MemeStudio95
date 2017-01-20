@@ -1,12 +1,12 @@
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#008080"
     tools:context="nyc.c4q.jonathancolon.dankify.twittermeme.activities.TweetActivity">
-
 
     <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
@@ -14,9 +14,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="75dp"
-        app:cardElevation="15dp">
+        app:cardElevation="15dp"
+        android:id="@+id/cardView">
 
     <RelativeLayout
+        android:id="@+id/twitter_meme_rlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -134,59 +136,135 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/retweet_value_tv"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="11dp"
-            android:paddingRight="11dp"
-            android:scaleType="centerInside"
-            />
+            android:layout_below="@id/tweet_body_tv"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="11dp"
+        android:paddingRight="11dp"
+        android:scaleType="centerInside"
+        android:id="@+id/tweet_pic_iv"/>
 
     </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 
 
+    <!--BUTTON ROW-->
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+    android:orientation="horizontal"
+        android:gravity="center_horizontal">
 
-    <ImageView
-        android:id="@+id/taskbar_iv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ms_95_taskbar"
-        android:layout_alignParentBottom="true"
-        android:scaleType="fitXY"/>
+        <!--ADD PHOTO BUTTON-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ms_button_blank"
-        android:scaleType="fitXY"
-        android:id="@+id/edit_button_iv"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="70dp"
-        android:layout_marginEnd="25dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"/>
+            <ImageView
+                android:id="@+id/add_photo_iv"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ms_button_blank"
+                android:scaleType="fitXY"
+                />
 
-    <TextView
-        android:text="Edit Tweet"
-        android:lines="1"
-        android:layout_marginEnd="0dp"
-        android:layout_alignBottom="@+id/edit_button_iv"
-        android:layout_alignStart="@+id/edit_button_iv"
-        android:id="@+id/edit_tweet_TV"
-        android:gravity="center"
-        android:textColor="#000000"
-        android:typeface="monospace"
-        android:layout_height="20dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="100dp"/>
+            <TextView
+                android:id="@+id/add_photo_tv"
+                android:text="Add photo"
+                android:lines="1"
+                android:layout_marginEnd="0dp"
+                android:layout_alignBottom="@+id/add_photo_iv"
+                android:layout_alignStart="@+id/add_photo_iv"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:typeface="monospace"
+                android:layout_height="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="100dp"/>
 
+        </RelativeLayout>
+
+        <!--SAVE BUTTON-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp">
+
+            <ImageView
+                android:id="@+id/save_to_gallery_iv"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ms_button_blank"
+                android:scaleType="fitXY"
+                />
+
+            <TextView
+                android:id="@+id/save_to_gallery_tv"
+                android:text="Save"
+                android:lines="1"
+                android:layout_marginEnd="0dp"
+                android:layout_alignBottom="@+id/save_to_gallery_iv"
+                android:layout_alignStart="@+id/save_to_gallery_iv"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:typeface="monospace"
+                android:layout_height="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="100dp"/>
+
+        </RelativeLayout>
+
+        <!--EDIT BUTTON-->
+        <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+            <ImageView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ms_button_blank"
+            android:scaleType="fitXY"
+            android:id="@+id/edit_button_iv"
+            />
+
+            <TextView
+            android:text="Edit Tweet"
+            android:lines="1"
+            android:layout_marginEnd="0dp"
+            android:layout_alignBottom="@+id/edit_button_iv"
+            android:layout_alignStart="@+id/edit_button_iv"
+            android:id="@+id/edit_tweet_TV"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:typeface="monospace"
+            android:layout_height="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="100dp"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <!--TASKBAR-->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:id="@+id/taskbar_iv"
+            android:layout_width="match_parent"
+            android:src="@drawable/ms_95_taskbar"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom"
+            android:baselineAlignBottom="true"
+            android:scaleType="fitXY"
+            android:layout_height="30dp"/>
+
     </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>
