@@ -8,4 +8,12 @@
         android:layout_height="match_parent"
         android:text="MEME MAIN"/>
 
+    <Button
+        android:id="@+id/button_mydocuments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_folder"
+        android:clickable="true"
+        android:onClick="startdocuments"/>
+
 </LinearLayout>
