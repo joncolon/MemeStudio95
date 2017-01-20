@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ms_dialog_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/text_fields_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/ms_note_pad"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:src="@drawable/ms_dialog_fragment"
+            android:scaleType="fitXY"/>
+
+        <EditText
+            android:id="@+id/name_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="enter name"
+            android:textColorHint="#66757f"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="26dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:inputType="textPersonName"/>
+
+        <EditText
+            android:id="@+id/twitter_handle_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="enter twitter handle"
+            android:textColorHint="#66757f"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_below="@+id/name_et"
+            android:layout_alignStart="@+id/name_et"
+            android:inputType="textPersonName"/>
+
+        <EditText
+            android:id="@+id/tweet_body_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="enter tweet text"
+            android:maxLength="140"
+            android:textColorHint="#66757f"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:layout_below="@+id/twitter_handle_et"
+            android:layout_alignStart="@+id/name_et"
+            android:inputType="textMultiLine"/>
+
+        <ImageView
+            android:id="@+id/save_button_iv"
+            android:layout_width="125dp"
+            app:srcCompat="@drawable/ms_button_blank"
+            android:layout_alignBottom="@id/ms_note_pad"
+            android:layout_alignEnd="@id/ms_note_pad"
+            android:layout_height="22dp"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"/>
+
+        <ImageView
+            android:id="@+id/cancel_button_iv"
+            android:layout_width="125dp"
+            app:srcCompat="@drawable/ms_button_blank"
+            android:layout_alignBottom="@id/ms_note_pad"
+            android:layout_toStartOf="@id/save_button_iv"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="2dp"
+            android:scaleType="fitXY"
+            android:layout_height="22dp"/>
+
+        <TextView
+            android:id="@+id/save_button_tv"
+            android:layout_width="125dp"
+            android:text="SAVE"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_alignBottom="@id/ms_note_pad"
+            android:layout_alignEnd="@id/ms_note_pad"
+            android:layout_height="22dp"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:id="@+id/cancel_button_tv"
+            android:layout_width="125dp"
+            android:text="CANCEL"
+            android:textColor="#000000"
+            android:gravity="center"
+            app:srcCompat="@drawable/ms_button_blank"
+            android:layout_alignBottom="@id/ms_note_pad"
+            android:layout_toStartOf="@id/save_button_iv"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="2dp"
+            android:scaleType="fitXY"
+            android:layout_height="22dp"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </RelativeLayout>
+</FrameLayout>

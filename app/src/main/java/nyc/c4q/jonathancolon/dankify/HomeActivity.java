@@ -10,7 +10,7 @@ import android.os.Bundle;
 
 public class HomeActivity extends AppCompatActivity {
 
-    String[] permissions = new String[]{Manifest.permission.CAMERA,
+    private String[] permissions = new String[]{Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.INTERNET};
 

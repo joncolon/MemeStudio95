@@ -18,7 +18,7 @@ public class SplashFragment extends Fragment {
 
     private static final String TAG = SplashFragment.class.getSimpleName();
     private Button startButton;
-    MediaPlayer player;
+    private MediaPlayer player;
     private View mRoot;
 
     @Override
@@ -41,20 +41,14 @@ public class SplashFragment extends Fragment {
         player.start();
     }
 
-    public void startMemeStudio() {
+    private void startMemeStudio() {
         Intent intent = new Intent(getActivity(), MemeMain.class);
         SplashFragment.this.startActivity(intent);
     }
 
-    public void clickMemeButton(){
+    private void clickMemeButton(){
         startButton = (Button) mRoot.findViewById(R.id.button_start);
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startMemeStudio();
-            }
-        });
-
+        startButton.setOnClickListener(v -> startMemeStudio());
     }
 
 }
