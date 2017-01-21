@@ -65,14 +65,11 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
     private void setOnClickListeners() {
         editTweetIV.setOnClickListener(v -> showEditDialog());
         saveBitmapIV.setOnClickListener(v -> saveBitmap(viewToBitmap(tweetLayout)));
-        addPhotoIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        addPhotoIV.setOnClickListener(v -> {
+            Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-                startActivityForResult(galleryIntent, RESULT_LOAD_ADD_PHOTO);
-            }
+            startActivityForResult(galleryIntent, RESULT_LOAD_ADD_PHOTO);
         });
         profilePicIV.setOnClickListener(v -> {
             Intent galleryIntent = new Intent(Intent.ACTION_PICK,
