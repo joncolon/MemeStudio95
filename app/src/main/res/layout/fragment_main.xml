@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<RelativeLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/clouds"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
-    <ImageView
-        android:id="@+id/iv_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:src="@drawable/ms_logo" />
 
 
     <!--TASKBAR-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <Button
             android:id="@+id/button_start"
@@ -34,6 +27,14 @@
             android:onClick="startMemeStudio"/>
 
         <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/clouds"
+            android:scaleType="matrix"
+            android:id="@+id/ms_cloud_iv"
+            android:layout_alignParentEnd="true"/>
+
+        <ImageView
             android:id="@+id/taskbar_iv"
             android:layout_width="match_parent"
             android:src="@drawable/ms_95_taskbar"
@@ -43,7 +44,16 @@
             android:scaleType="fitXY"
             android:layout_height="30dp"/>
 
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            android:src="@drawable/ms_logo"
+            android:layout_above="@+id/imageView"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="48dp"/>
+
     </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>
