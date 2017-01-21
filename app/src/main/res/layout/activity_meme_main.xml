@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#008083">
 
-    <TextView
+    <ImageView
+        android:id="@+id/button_mydocuments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_documents"
+        android:clickable="true"
+        android:onClick="startDocuments"/>
+
+
+    <!--TASKBAR-->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="MEME MAIN"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <Button
+            android:id="@+id/button_start"
+            android:layout_width="70dp"
+            android:layout_height="28dp"
+            android:background="@drawable/start_windows_unpressed"
+            android:clickable="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:onClick="startMemeStudio"/>
+
+        <ImageView
+            android:id="@+id/taskbar_iv"
+            android:layout_width="match_parent"
+            android:src="@drawable/ms_95_taskbar"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom"
+            android:baselineAlignBottom="true"
+            android:scaleType="fitXY"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+
 
 </LinearLayout>

@@ -21,11 +21,11 @@ import nyc.c4q.jonathancolon.dankify.R;
 public class EditTweetFragment extends DialogFragment {
 
     private EditText editTwitterHandle, editTweet, editName;
-    private ImageView saveButton;
     private String name;
     private String twitterHandle;
     private String tweetBody;
     private OnSaveChanges listener;
+    private ImageView saveButton;
 
     public EditTweetFragment() {
     }

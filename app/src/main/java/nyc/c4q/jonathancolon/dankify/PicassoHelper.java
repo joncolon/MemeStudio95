@@ -26,7 +26,7 @@ public class PicassoHelper {
     }
 
     public void loadTweetBodyImg(Uri uri, ImageView imageView){
-        Picasso.with(context).load(uri).into(imageView);
+        Picasso.with(context).load(uri).resize(1000, 1400).centerInside().into(imageView);
     }
 
 }

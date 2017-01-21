@@ -3,6 +3,7 @@ package nyc.c4q.jonathancolon.dankify.twittermeme.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,9 +17,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import nyc.c4q.jonathancolon.dankify.Meme;
 import nyc.c4q.jonathancolon.dankify.PicassoHelper;
 import nyc.c4q.jonathancolon.dankify.R;
+import nyc.c4q.jonathancolon.dankify.sqlite.MemeDatabaseHelper;
 import nyc.c4q.jonathancolon.dankify.twittermeme.fragments.EditTweetFragment;
+
+import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 public class TweetActivity extends AppCompatActivity implements EditTweetFragment.OnSaveChanges {
 
@@ -29,6 +34,8 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
     private ImageView editTweetIV, profilePicIV, saveBitmapIV, addPhotoIV, tweetPicIV;
     private RelativeLayout tweetLayout;
     private EditTweetFragment fragment;
+    private SQLiteDatabase db;
+
 
 
     @Override
@@ -135,6 +142,12 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
     }
 
     public void saveBitmap(Bitmap bitmap){
-        MediaStore.Images.Media.insertImage(this.getContentResolver(), bitmap, "image1", "an image");
+        Meme meme = new Meme();
+        String path = MediaStore.Images.Media.insertImage(this.getContentResolver(), bitmap, "image1", "an image");
+        meme.setMemeImage(path);
+
+        MemeDatabaseHelper dbHelper = MemeDatabaseHelper.getInstance(this);
+        db = dbHelper.getWritableDatabase();
+        cupboard().withDatabase(db).put();
     }
 }

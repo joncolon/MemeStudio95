@@ -50,4 +50,5 @@ public class SplashFragment extends Fragment {
         startButton = (Button) mRoot.findViewById(R.id.button_start);
         startButton.setOnClickListener(v -> startMemeStudio());
     }
+
 }
