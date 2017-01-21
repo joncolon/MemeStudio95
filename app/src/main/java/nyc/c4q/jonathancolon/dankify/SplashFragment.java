@@ -41,14 +41,16 @@ public class SplashFragment extends Fragment {
         player.start();
     }
 
+    private void clickMemeButton(){
+        startButton = (Button) mRoot.findViewById(R.id.button_start);
+        startButton.setOnClickListener(v -> startMemeStudio());
+    }
+
     private void startMemeStudio() {
         Intent intent = new Intent(getActivity(), MemeMain.class);
         SplashFragment.this.startActivity(intent);
     }
 
-    private void clickMemeButton(){
-        startButton = (Button) mRoot.findViewById(R.id.button_start);
-        startButton.setOnClickListener(v -> startMemeStudio());
-    }
+
 
 }
