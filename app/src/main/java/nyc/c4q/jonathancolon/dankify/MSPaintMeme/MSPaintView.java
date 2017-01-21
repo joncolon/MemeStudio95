@@ -9,20 +9,24 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
+
+import nyc.c4q.jonathancolon.dankify.R;
 
 /**
  * Created by mathcore on 1/16/17.
  */
 
 public class MSPaintView extends View {
-    private boolean erase=false;
+    private boolean erase = false;
     private Path drawPath;
     private Paint drawPaint, canvasPaint;
     private int paintColor = 0xFF660000;
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
+    private float brushSize, lastBrushSize;
 
     public MSPaintView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -43,12 +47,14 @@ public class MSPaintView extends View {
         drawCanvas = new Canvas(canvasBitmap);
     }
 
-    private void setupDrawing(){
+    private void setupDrawing() {
+        brushSize = getResources().getInteger(R.integer.medium_size);
+        lastBrushSize = brushSize;
         drawPath = new Path();
         drawPaint = new Paint();
         drawPaint.setColor(paintColor);
         drawPaint.setAntiAlias(true);
-        drawPaint.setStrokeWidth(20);
+        drawPaint.setStrokeWidth(brushSize);
         drawPaint.setStyle(Paint.Style.STROKE);
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -56,7 +62,8 @@ public class MSPaintView extends View {
 
 
     }
-    public boolean onTouchEvent(MotionEvent event){
+
+    public boolean onTouchEvent(MotionEvent event) {
         float touchX = event.getX();
         float touchY = event.getY();
         switch (event.getAction()) {
@@ -77,15 +84,36 @@ public class MSPaintView extends View {
         return true;
     }
 
-    public void setColor(String newColor){
+    public void setColor(String newColor) {
         invalidate();
         paintColor = Color.parseColor(newColor);
         drawPaint.setColor(paintColor);
     }
 
-    public void setErase(boolean isErase){
-        erase=isErase;
-        if(erase) drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    public void setErase(boolean isErase) {
+        erase = isErase;
+        if (erase) drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         else drawPaint.setXfermode(null);
     }
+
+    public void startNew() {
+        drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+        invalidate();
+    }
+
+    public void setBrushSize(float newSize) {
+        float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                newSize, getResources().getDisplayMetrics());
+        brushSize = pixelAmount;
+        drawPaint.setStrokeWidth(brushSize);
+    }
+
+    public void setLastBrushSize(float lastSize) {
+        lastBrushSize = lastSize;
+    }
+
+    public float getLastBrushSize() {
+        return lastBrushSize;
+    }
+
 }
