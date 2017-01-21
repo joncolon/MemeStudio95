@@ -1,11 +1,13 @@
 package nyc.c4q.jonathancolon.dankify;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+
 
 import nyc.c4q.jonathancolon.dankify.twittermeme.activities.TweetActivity;
 
@@ -15,19 +17,21 @@ import nyc.c4q.jonathancolon.dankify.twittermeme.activities.TweetActivity;
 
 public class MemeMain extends AppCompatActivity {
 
-    private Button drawStudio;
-    private View mRoot;
+    private MyDocumentsDialogFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meme_main);
-
     }
 
     public void startDocuments(View view){
-        //TODO fill in next intent -> MyDocuments activity
-        Intent intent = new Intent(MemeMain.this, TweetActivity.class);
-        startActivity(intent);
+        showMyDocumentsDialog();
+    }
+
+    private void showMyDocumentsDialog() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        fragment = MyDocumentsDialogFragment.newInstance("My Documents");
+        fragment.show(ft, "fragment_mydocuments");
     }
 }
