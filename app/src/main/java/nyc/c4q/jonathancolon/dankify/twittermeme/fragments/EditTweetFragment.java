@@ -21,11 +21,11 @@ import nyc.c4q.jonathancolon.dankify.R;
 public class EditTweetFragment extends DialogFragment {
 
     private EditText editTwitterHandle, editTweet, editName;
-    private ImageView saveButton;
     private String name;
     private String twitterHandle;
     private String tweetBody;
     private OnSaveChanges listener;
+    private ImageView saveButton;
 
     public EditTweetFragment() {
     }
@@ -33,7 +33,6 @@ public class EditTweetFragment extends DialogFragment {
     public static EditTweetFragment newInstance(String title) {
         EditTweetFragment fragment = new EditTweetFragment();
         Bundle args = new Bundle();
-        args.putString("title", title);
         fragment.setArguments(args);
         return fragment;
 
@@ -81,8 +80,6 @@ public class EditTweetFragment extends DialogFragment {
         editName = (EditText) view.findViewById(R.id.name_et);
         editTwitterHandle = (EditText) view.findViewById(R.id.twitter_handle_et);
         editTweet = (EditText) view.findViewById(R.id.tweet_body_et);
-        String title = getArguments().getString("title", "Edit Tweet");
-        getDialog().setTitle(title);
         editName.requestFocus();
         getDialog().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
