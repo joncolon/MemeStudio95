@@ -1,4 +1,4 @@
-package nyc.c4q.jonathancolon.dankify.MSPaintMeme;
+package nyc.c4q.jonathancolon.dankify.mspaintmeme;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -17,7 +17,6 @@ public class MSPaintActivity extends Activity implements View.OnClickListener {
     private MSPaintView drawView;
     private ImageButton currPaint;
     private ImageButton eraseBtn;
-
 
     @Override
     public void onClick(View view) {

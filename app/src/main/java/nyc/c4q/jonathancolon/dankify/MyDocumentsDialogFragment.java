@@ -7,10 +7,9 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import nyc.c4q.jonathancolon.dankify.mspaintmeme.MSPaintActivity;
 import nyc.c4q.jonathancolon.dankify.twittermeme.activities.TweetActivity;
 
 /**
@@ -20,6 +19,7 @@ import nyc.c4q.jonathancolon.dankify.twittermeme.activities.TweetActivity;
 public class MyDocumentsDialogFragment extends DialogFragment {
 
     private ImageView iconTwitter;
+    private ImageView iconDrawStudio;
     private View mRoot;
 
     public static MyDocumentsDialogFragment newInstance(String title) {
@@ -35,6 +35,7 @@ public class MyDocumentsDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRoot = inflater.inflate(R.layout.fragment_mydocuments, container);
         clickTwitterIcon();
+        clickDrawStudio();
         return mRoot;
     }
 
@@ -46,11 +47,20 @@ public class MyDocumentsDialogFragment extends DialogFragment {
     public void clickTwitterIcon() {
         iconTwitter = (ImageView) mRoot.findViewById(R.id.icon_twitter);
         iconTwitter.setOnClickListener(v -> startTwitter());
-
     }
 
     private void startTwitter() {
         Intent intent = new Intent(getActivity(), TweetActivity.class);
+        MyDocumentsDialogFragment.this.startActivity(intent);
+    }
+
+    public void clickDrawStudio(){
+        iconDrawStudio = (ImageView) mRoot.findViewById(R.id.icon_draw_studio);
+        iconDrawStudio.setOnClickListener(v -> startDrawStudio());
+    }
+
+    private void startDrawStudio() {
+        Intent intent = new Intent(getActivity(), MSPaintActivity.class);
         MyDocumentsDialogFragment.this.startActivity(intent);
     }
 

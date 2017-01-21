@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".MemeMain"/>
         <activity android:name=".twittermeme.activities.TweetActivity"/>
-        <activity android:name=".MSPaintMeme.MSPaintActivity"/>
+        <activity android:name=".mspaintmeme.MSPaintActivity"/>
         <activity android:name=".museum.MemeMuseum">
         </activity>
     </application>

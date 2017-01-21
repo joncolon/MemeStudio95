@@ -1,4 +1,4 @@
-package nyc.c4q.jonathancolon.dankify.MSPaintMeme;
+package nyc.c4q.jonathancolon.dankify.mspaintmeme;
 
 import android.content.Context;
 import android.graphics.Bitmap;

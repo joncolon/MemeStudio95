@@ -22,6 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_twitter"
+                android:clickable="true"
                 android:layout_marginStart="22dp"
                 android:layout_marginTop="42dp" />
 
@@ -32,6 +33,7 @@
                 android:layout_toEndOf="@+id/icon_twitter"
                 android:layout_toRightOf="@+id/icon_twitter"
                 android:src="@drawable/icon_draw_studio"
+                android:clickable="true"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="42dp" />
 
