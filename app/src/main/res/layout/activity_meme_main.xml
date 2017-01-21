@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/icon_documents"
         android:clickable="true"
+        android:layout_marginStart="20dp"
         android:onClick="startDocuments"/>
-
 
     <!--TASKBAR-->
     <RelativeLayout
