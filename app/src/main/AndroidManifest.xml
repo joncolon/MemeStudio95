@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-
     <uses-feature android:name="android.hardware.camera2.full"/>
 
     <application
@@ -23,7 +22,7 @@
         </activity>
         <activity android:name=".MemeMain"/>
         <activity android:name=".twittermeme.activities.TweetActivity"/>
-        <activity android:name=".MSPaintMeme.MSPaintActivity"/>
+        <activity android:name=".mspaintmeme.MSPaintActivity"/>
         <activity android:name=".museum.MemeMuseum">
         </activity>
     </application>
