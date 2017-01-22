@@ -10,11 +10,42 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="nyc.c4q.jonathancolon.dankify.MuseumDisplayActivity">
+    tools:context="nyc.c4q.jonathancolon.dankify.museum.activities.MuseumDisplayActivity">
 
     <ImageView
         android:id="@+id/meme_display_iv"
         android:layout_width="match_parent"
-        android:layout_height="400dp"/>
+        android:layout_height="500dp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/share_iv"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ms_button_blank"
+            />
+
+        <TextView
+            android:id="@+id/share_tv"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/share_iv"
+            android:layout_alignStart="@+id/share_iv"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="0dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="Share"
+            android:textColor="#000000"
+            android:typeface="monospace"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

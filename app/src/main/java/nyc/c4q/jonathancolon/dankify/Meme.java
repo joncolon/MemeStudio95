@@ -1,10 +1,12 @@
 package nyc.c4q.jonathancolon.dankify;
 
+import java.io.Serializable;
+
 /**
  * Created by jonathancolon on 1/8/17.
  */
 
-public class Meme {
+public class Meme implements Serializable {
     Long _id;
     String memeImage;
     String dateCreated;
@@ -33,6 +35,5 @@ public class Meme {
     public void setMemeType(int memeType) {
         this.memeType = memeType;
     }
-
 
 }

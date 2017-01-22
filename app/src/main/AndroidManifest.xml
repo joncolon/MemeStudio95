@@ -28,7 +28,7 @@
         <activity android:name=".mspaintmeme.MSPaintActivity"/>
         <activity android:name=".museum.activities.MemeMuseumActivity">
         </activity>
-        <activity android:name=".MuseumDisplayActivity">
+        <activity android:name=".museum.activities.MuseumDisplayActivity">
         </activity>
     </application>
 

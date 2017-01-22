@@ -1,9 +1,7 @@
 package nyc.c4q.jonathancolon.dankify.museum.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -21,6 +19,7 @@ import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 public class MemeMuseumActivity extends AppCompatActivity implements MemeAdapter.Listener {
 
+    private static final String MEME_KEY = "museum_meme_key" ;
     private RecyclerView recyclerView;
     private List<Meme> memeList;
 
@@ -54,7 +53,9 @@ public class MemeMuseumActivity extends AppCompatActivity implements MemeAdapter
 
     @Override
     public void onMemeClicked(Meme meme) {
-
+        Intent intent = new Intent(this, MuseumDisplayActivity.class);
+        intent.putExtra(MemeMuseumActivity.MEME_KEY, meme);
+        startActivity(intent);
     }
 
     @Override
@@ -67,14 +68,5 @@ public class MemeMuseumActivity extends AppCompatActivity implements MemeAdapter
         MemeDatabaseHelper dbHelper = MemeDatabaseHelper.getInstance(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         cupboard().withDatabase(db).delete(meme);
-    }
-
-    private void createSharePhotoIntent(Context context, String path) {
-        Intent share = new Intent(Intent.ACTION_SEND);
-        String type = "image/*";
-        share.setType(type);
-        Uri uri = Uri.parse(path);
-        share.putExtra(Intent.EXTRA_STREAM, uri);
-        context.startActivity(Intent.createChooser(share, "Share to"));
     }
 }
