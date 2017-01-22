@@ -18,7 +18,7 @@ public class SqlHelper {
     public SqlHelper() {
     }
 
-    public static List<Meme> selectAllContacts(SQLiteDatabase db) {
+    public static List<Meme> selectAllMemes(SQLiteDatabase db) {
         List<Meme> memes = new ArrayList<>();
         try {
             QueryResultIterable<Meme> itr = cupboard().withDatabase(db).query(Meme.class).query();
@@ -27,7 +27,7 @@ public class SqlHelper {
             }
             itr.close();
         } catch (Exception e) {
-            Log.e("Meme List", "selectAllContacts: ", e);
+            Log.e("Meme List", "selectAllMemes: ", e);
         }
         return memes;
     }

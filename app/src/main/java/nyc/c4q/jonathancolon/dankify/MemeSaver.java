@@ -20,21 +20,21 @@ import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 public class MemeSaver {
     private Context context;
 
-    public void saveMemeToDB(String path) {
+    public void saveMemeToDB(Context context, String path) {
         Meme meme = new Meme();
         meme.setMemeImage(path);
         MemeDatabaseHelper dbHelper = MemeDatabaseHelper.getInstance(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        cupboard().withDatabase(db).put();
+        cupboard().withDatabase(db).put(meme);
     }
 
-    public String saveToGallery(Bitmap bitmap) {
+    public String saveToGallery(Context context, Bitmap bitmap) {
         String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "image1", "an image");
-        scanMedia(path);
+        scanMedia(context, path);
         return path;
     }
 
-    private void scanMedia(String path) {
+    private void scanMedia(Context context, String path) {
         File file = new File(path);
         Uri uri = Uri.fromFile(file);
         Intent scanFileIntent = new Intent(
@@ -43,7 +43,7 @@ public class MemeSaver {
         context.sendBroadcast(scanFileIntent);
     }
 
-    public void createSharePhotoIntent(String type, String mediaPath) {
+    public void createSharePhotoIntent(Context context, String type, String mediaPath) {
         Intent share = new Intent(Intent.ACTION_SEND);
 
         share.setType(type);

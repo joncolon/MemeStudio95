@@ -22,11 +22,8 @@ public class MyDocumentsDialogFragment extends DialogFragment {
     private ImageView iconDrawStudio;
     private View mRoot;
 
-    public static MyDocumentsDialogFragment newInstance(String title) {
+    public static MyDocumentsDialogFragment newInstance() {
         MyDocumentsDialogFragment fragment = new MyDocumentsDialogFragment();
-        Bundle args = new Bundle();
-        args.putString("title", title);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -48,7 +45,7 @@ public class MyDocumentsDialogFragment extends DialogFragment {
         iconTwitter = (ImageView) mRoot.findViewById(R.id.icon_twitter);
         iconTwitter.setOnClickListener(v -> {
             SoundFX soundFX = new SoundFX();
-            soundFX.playDoubleClick(getActivity().getApplicationContext());
+            soundFX.playSingleClick(getActivity().getApplicationContext());
             startTwitter();
         });
     }
@@ -61,6 +58,8 @@ public class MyDocumentsDialogFragment extends DialogFragment {
     public void clickDrawStudio(){
         iconDrawStudio = (ImageView) mRoot.findViewById(R.id.icon_draw_studio);
         iconDrawStudio.setOnClickListener(v -> {
+            SoundFX soundFX = new SoundFX();
+            soundFX.playSingleClick(getActivity().getApplicationContext());
             startDrawStudio();
         });
     }

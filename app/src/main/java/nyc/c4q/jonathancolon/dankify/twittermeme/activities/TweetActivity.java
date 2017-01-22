@@ -35,13 +35,11 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
     private SoundFX soundFX = new SoundFX();
     private Context context;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweet);
         context = getApplicationContext();
-
         initViews();
         setOnClickListeners();
     }
@@ -94,10 +92,9 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
 
     public void saveBitmap(Bitmap bitmap) {
         MemeSaver memeSaver = new MemeSaver();
-        String type = "image/*";
-        String path = memeSaver.saveToGallery(bitmap);
-        memeSaver.saveMemeToDB(path);
-        memeSaver.createSharePhotoIntent(type, path);
+
+        String path = memeSaver.saveToGallery(context, bitmap);
+        memeSaver.saveMemeToDB(context, path);
         Toast.makeText(this, "Saved to gallery", Toast.LENGTH_SHORT).show();
     }
 
@@ -117,11 +114,6 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
         removeEditDialog();
     }
 
-    @Override
-    public void onCancel() {
-        removeEditDialog();
-    }
-
     synchronized private void setTweetText(String name, String tHandle, String body) {
         nameTV.setText(name);
         twitterHandleTV.setText(tHandle);
@@ -133,21 +125,20 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
         fm.beginTransaction().remove(fragment).commit();
     }
 
+    @Override
+    public void onCancel() {
+        removeEditDialog();
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        retrieveImageFromGallery(requestCode, resultCode, data);
+    }
+
+    private void retrieveImageFromGallery(int requestCode, int resultCode, Intent data) {
         try {
             if (resultCode == Activity.RESULT_OK) {
-
-                if (requestCode == RESULT_LOAD_PROFILE_PIC) {
-                    PicassoHelper ph = new PicassoHelper(this);
-                    Uri uri = data.getData();
-                    ph.loadTwitterProfileImg(uri, profilePicIV);
-                }
-                if (requestCode == RESULT_LOAD_ADD_PHOTO) {
-                    PicassoHelper ph = new PicassoHelper(this);
-                    Uri uri = data.getData();
-                    ph.loadTweetBodyImg(uri, tweetPicIV);
-                }
+                isPhotoSelected(requestCode, data);
             } else {
                 Toast.makeText(this, "No photo selected",
                         Toast.LENGTH_LONG).show();
@@ -157,5 +148,27 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
+    }
+
+    private void isPhotoSelected(int requestCode, Intent data) {
+        if (requestCode == RESULT_LOAD_PROFILE_PIC) {
+            PicassoHelper ph = new PicassoHelper(this);
+            Uri uri = data.getData();
+            ph.loadTwitterProfileImg(uri, profilePicIV);
+        }
+        if (requestCode == RESULT_LOAD_ADD_PHOTO) {
+            PicassoHelper ph = new PicassoHelper(this);
+            Uri uri = data.getData();
+            ph.loadTweetBodyImg(uri, tweetPicIV);
+        }
+    }
+
+    private void createSharePhotoIntent(Context context, String mediaPath) {
+        Intent share = new Intent(Intent.ACTION_SEND);
+        String type = "image/*";
+        share.setType(type);
+        Uri uri = Uri.parse(mediaPath);
+        share.putExtra(Intent.EXTRA_STREAM, uri);
+        context.startActivity(Intent.createChooser(share, "Share to"));
     }
 }
