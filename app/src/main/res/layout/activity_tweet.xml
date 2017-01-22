@@ -120,6 +120,7 @@
         app:cardElevation="15dp">
 
         <LinearLayout
+            android:id="@+id/twitter_meme_linlayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#ffffff"
@@ -127,7 +128,6 @@
 
 
             <RelativeLayout
-                android:id="@+id/twitter_meme_rlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"

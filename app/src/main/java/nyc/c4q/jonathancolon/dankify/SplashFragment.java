@@ -2,7 +2,6 @@ package nyc.c4q.jonathancolon.dankify;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -18,32 +17,31 @@ public class SplashFragment extends Fragment {
 
     private static final String TAG = SplashFragment.class.getSimpleName();
     private Button startButton;
-    private MediaPlayer player;
+    private SoundFX soundFX;
+
     private View mRoot;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        player = MediaPlayer.create(getActivity(), R.raw.windows95_startup);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         mRoot = inflater.inflate(R.layout.fragment_main, parent, false);
-        clickMemeButton();
-        playBootUpTheme();
+        soundFX = new SoundFX();
+        clickStartButton();
+        soundFX.playBootUpTheme(getActivity());
         return mRoot;
     }
 
-    private void playBootUpTheme() {
-        player = MediaPlayer.create(getActivity(), R.raw.windows95_startup);
-        player.start();
-    }
-
-    private void clickMemeButton(){
+    private void clickStartButton(){
         startButton = (Button) mRoot.findViewById(R.id.button_start);
-        startButton.setOnClickListener(v -> startMemeStudio());
+        startButton.setOnClickListener(v -> {
+            soundFX.playSingleClick(getActivity());
+            startMemeStudio();
+        });
     }
 
     private void startMemeStudio() {

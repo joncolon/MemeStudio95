@@ -46,7 +46,11 @@ public class MyDocumentsDialogFragment extends DialogFragment {
 
     public void clickTwitterIcon() {
         iconTwitter = (ImageView) mRoot.findViewById(R.id.icon_twitter);
-        iconTwitter.setOnClickListener(v -> startTwitter());
+        iconTwitter.setOnClickListener(v -> {
+            SoundFX soundFX = new SoundFX();
+            soundFX.playDoubleClick(getActivity().getApplicationContext());
+            startTwitter();
+        });
     }
 
     private void startTwitter() {
@@ -56,7 +60,9 @@ public class MyDocumentsDialogFragment extends DialogFragment {
 
     public void clickDrawStudio(){
         iconDrawStudio = (ImageView) mRoot.findViewById(R.id.icon_draw_studio);
-        iconDrawStudio.setOnClickListener(v -> startDrawStudio());
+        iconDrawStudio.setOnClickListener(v -> {
+            startDrawStudio();
+        });
     }
 
     private void startDrawStudio() {

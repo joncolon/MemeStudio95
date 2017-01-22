@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import nyc.c4q.jonathancolon.dankify.R;
+import nyc.c4q.jonathancolon.dankify.SoundFX;
 
 /**
  * Created by jonathancolon on 1/16/17.
@@ -24,8 +25,8 @@ public class EditTweetFragment extends DialogFragment {
     private String name;
     private String twitterHandle;
     private String tweetBody;
-    private OnSaveChanges listener;
-    private ImageView saveButton;
+    private OnButtonSelection listener;
+    private ImageView saveButtonIV, cancelButtonIV;
 
     public EditTweetFragment() {
     }
@@ -41,8 +42,8 @@ public class EditTweetFragment extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof EditTweetFragment.OnSaveChanges) {
-            listener = (EditTweetFragment.OnSaveChanges) context;
+        if (context instanceof OnButtonSelection) {
+            listener = (OnButtonSelection) context;
         } else {
             throw new ClassCastException(context.toString()
                     + " must implement MyListFragment.OnItemSelectedListener");
@@ -56,7 +57,15 @@ public class EditTweetFragment extends DialogFragment {
 
 
         initVIews(view);
-        saveButton.setOnClickListener(v -> {
+
+        cancelButtonIV.setOnClickListener(v -> {
+            SoundFX soundFX = new SoundFX();
+            soundFX.playSingleClick(getActivity().getApplicationContext());
+            listener.onCancel();
+        });
+        saveButtonIV.setOnClickListener(v -> {
+            SoundFX soundFX = new SoundFX();
+            soundFX.playSingleClick(getActivity().getApplicationContext());
             name = editName.getText().toString();
             twitterHandle = editTwitterHandle.getText().toString();
             tweetBody = editTweet.getText().toString();
@@ -70,7 +79,8 @@ public class EditTweetFragment extends DialogFragment {
         editName = (EditText)view.findViewById(R.id.name_et);
         editTwitterHandle = (EditText)view.findViewById(R.id.twitter_handle_et);
         editTweet = (EditText)view.findViewById(R.id.name_et);
-        saveButton = (ImageView)view.findViewById(R.id.save_button_iv);
+        saveButtonIV = (ImageView)view.findViewById(R.id.save_button_iv);
+        cancelButtonIV = (ImageView)view.findViewById(R.id.cancel_button_iv);
     }
 
     @Override
@@ -87,8 +97,9 @@ public class EditTweetFragment extends DialogFragment {
 
 
     // Define the events that the fragment will use to communicate
-    public interface OnSaveChanges {
+    public interface OnButtonSelection {
         // This can be any number of events to be sent to the activity
         void onSaved(String name, String tHandle, String body);
+        void onCancel();
     }
 }

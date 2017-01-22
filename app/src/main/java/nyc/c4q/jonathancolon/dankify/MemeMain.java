@@ -1,22 +1,16 @@
 package nyc.c4q.jonathancolon.dankify;
 
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
-
-import nyc.c4q.jonathancolon.dankify.twittermeme.activities.TweetActivity;
 
 /**
  * Created by catwong on 1/15/17.
  */
 
 public class MemeMain extends AppCompatActivity {
-
+    private SoundFX soundFX = new SoundFX();
     private MyDocumentsDialogFragment fragment;
 
     @Override
@@ -26,6 +20,7 @@ public class MemeMain extends AppCompatActivity {
     }
 
     public void startDocuments(View view){
+        soundFX.playDoubleClick(getApplicationContext());
         showMyDocumentsDialog();
     }
 

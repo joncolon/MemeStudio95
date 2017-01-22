@@ -119,10 +119,10 @@ public class MSPaintActivity extends Activity implements View.OnClickListener {
                 public void onClick(DialogInterface dialog, int which) {
                     //save drawing
                     drawView.setDrawingCacheEnabled(true);
-                    String imgSaved = MediaStore.Images.Media.insertImage(
+                    String path = MediaStore.Images.Media.insertImage(
                             getContentResolver(), drawView.getDrawingCache(),
                             UUID.randomUUID().toString() + ".png", "drawing");
-                    if (imgSaved != null) {
+                    if (path != null) {
                         Toast savedToast = Toast.makeText(getApplicationContext(),
                                 "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
                         savedToast.show();
