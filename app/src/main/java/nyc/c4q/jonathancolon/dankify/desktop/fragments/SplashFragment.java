@@ -1,4 +1,4 @@
-package nyc.c4q.jonathancolon.dankify;
+package nyc.c4q.jonathancolon.dankify.desktop.fragments;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import nyc.c4q.jonathancolon.dankify.R;
+import nyc.c4q.jonathancolon.dankify.SoundFX;
+import nyc.c4q.jonathancolon.dankify.desktop.activities.DesktopActivity;
+
 /**
  * Created by catwong on 1/15/17.
  */
@@ -18,7 +22,6 @@ public class SplashFragment extends Fragment {
     private static final String TAG = SplashFragment.class.getSimpleName();
     private Button startButton;
     private SoundFX soundFX;
-
     private View mRoot;
 
     @Override
@@ -29,7 +32,7 @@ public class SplashFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        mRoot = inflater.inflate(R.layout.fragment_main, parent, false);
+        mRoot = inflater.inflate(R.layout.fragment_splashscreen, parent, false);
         soundFX = new SoundFX();
         clickStartButton();
         soundFX.playBootUpTheme(getActivity());
@@ -45,7 +48,7 @@ public class SplashFragment extends Fragment {
     }
 
     private void startMemeStudio() {
-        Intent intent = new Intent(getActivity(), MemeMain.class);
+        Intent intent = new Intent(getActivity(), DesktopActivity.class);
         SplashFragment.this.startActivity(intent);
     }
 

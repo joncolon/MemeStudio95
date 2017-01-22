@@ -1,4 +1,4 @@
-package nyc.c4q.jonathancolon.dankify.twittermeme.activities;
+package nyc.c4q.jonathancolon.dankify.twitterclone.activities;
 
 
 import android.app.Activity;
@@ -21,7 +21,7 @@ import nyc.c4q.jonathancolon.dankify.MemeSaver;
 import nyc.c4q.jonathancolon.dankify.PicassoHelper;
 import nyc.c4q.jonathancolon.dankify.R;
 import nyc.c4q.jonathancolon.dankify.SoundFX;
-import nyc.c4q.jonathancolon.dankify.twittermeme.fragments.EditTweetFragment;
+import nyc.c4q.jonathancolon.dankify.twitterclone.fragments.EditTweetFragment;
 
 public class TweetActivity extends AppCompatActivity implements EditTweetFragment.OnButtonSelection {
 
@@ -163,12 +163,5 @@ public class TweetActivity extends AppCompatActivity implements EditTweetFragmen
         }
     }
 
-    private void createSharePhotoIntent(Context context, String mediaPath) {
-        Intent share = new Intent(Intent.ACTION_SEND);
-        String type = "image/*";
-        share.setType(type);
-        Uri uri = Uri.parse(mediaPath);
-        share.putExtra(Intent.EXTRA_STREAM, uri);
-        context.startActivity(Intent.createChooser(share, "Share to"));
-    }
+
 }

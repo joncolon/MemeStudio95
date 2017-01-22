@@ -1,4 +1,4 @@
-package nyc.c4q.jonathancolon.dankify.museum;
+package nyc.c4q.jonathancolon.dankify.museum.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -79,7 +79,7 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MemeViewHolder
         void bind(Meme m) {
             final Meme meme = m;
             PicassoHelper ph = new PicassoHelper(context);
-            ph.loadImageFromString(meme.getMemeImage(), memeIV);
+            ph.loadImageForMuseum(meme.getMemeImage(), memeIV);
 
             itemView.setOnClickListener(v -> listener.onMemeClicked(meme));
             itemView.setOnLongClickListener(v -> {

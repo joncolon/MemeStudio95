@@ -29,4 +29,8 @@ public class PicassoHelper {
         Picasso.with(context).load(uri).resize(1000, 1400).centerInside().into(imageView);
     }
 
+    public void loadImageForMuseum(String uriString, ImageView imageView){
+        Picasso.with(context).load(Uri.parse(uriString)).centerInside().resize(1000, 1000).into(imageView);
+    }
+
 }

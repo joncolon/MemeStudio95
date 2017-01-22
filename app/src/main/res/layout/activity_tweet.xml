@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="#008080"
     android:orientation="vertical"
-    tools:context="nyc.c4q.jonathancolon.dankify.twittermeme.activities.TweetActivity">
+    tools:context="nyc.c4q.jonathancolon.dankify.twitterclone.activities.TweetActivity">
 
     <!--BUTTON ROW-->
     <LinearLayout
@@ -155,7 +155,8 @@
                     android:text="Add Name"
                     android:textColor="#292f33"
                     android:textSize="15sp"
-                    tools:textStyle="bold"/>
+                    tools:textStyle="bold"
+                    android:textStyle="normal|bold"/>
 
                 <TextView
                     android:id="@+id/tweet_body_tv"
@@ -186,7 +187,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/timestamp_tv"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="11dp"
                     android:layout_toEndOf="@+id/likes_value_tv"
                     android:text="LIKES"
                     android:textColor="#66757f"
@@ -231,7 +233,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
                     android:layout_toStartOf="@+id/name_tv"
-                    android:background="@drawable/blank_pic_twitter"
                     app:cardCornerRadius="@dimen/cardview_default_radius"
                     app:cardElevation="0dp">
 
@@ -239,6 +240,8 @@
                         android:id="@+id/profile_pic_iv"
                         android:layout_width="54dp"
                         android:layout_height="54dp"
+                        android:src="@drawable/blank_pic_twitter"
+                        android:scaleType="fitXY"
                         />
                 </android.support.v7.widget.CardView>
 

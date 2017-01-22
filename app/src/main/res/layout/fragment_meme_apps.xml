@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mydocuments_dialog_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ms_note_pad"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/image_mydocuments"/>
+
+        <ImageView
+            android:id="@+id/icon_twitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="42dp"
+            android:clickable="true"
+            android:src="@drawable/icon_twitter"/>
+
+        <ImageView
+            android:id="@+id/icon_draw_studio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="42dp"
+            android:layout_toEndOf="@+id/icon_twitter"
+            android:clickable="true"
+            android:src="@drawable/icon_paint_modern"/>
+    </RelativeLayout>
+</FrameLayout>

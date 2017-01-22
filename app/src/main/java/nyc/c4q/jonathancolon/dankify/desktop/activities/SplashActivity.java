@@ -1,4 +1,4 @@
-package nyc.c4q.jonathancolon.dankify;
+package nyc.c4q.jonathancolon.dankify.desktop.activities;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -8,7 +8,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class HomeActivity extends AppCompatActivity {
+import nyc.c4q.jonathancolon.dankify.R;
+import nyc.c4q.jonathancolon.dankify.desktop.fragments.SplashFragment;
+
+public class SplashActivity extends AppCompatActivity {
 
     private String[] permissions = new String[]{Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -19,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_splashscreen);
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)

@@ -42,13 +42,4 @@ public class MemeSaver {
 
         context.sendBroadcast(scanFileIntent);
     }
-
-    public void createSharePhotoIntent(Context context, String type, String mediaPath) {
-        Intent share = new Intent(Intent.ACTION_SEND);
-
-        share.setType(type);
-        Uri uri = Uri.parse(mediaPath);
-        share.putExtra(Intent.EXTRA_STREAM, uri);
-        context.startActivity(Intent.createChooser(share, "Share to"));
-    }
 }

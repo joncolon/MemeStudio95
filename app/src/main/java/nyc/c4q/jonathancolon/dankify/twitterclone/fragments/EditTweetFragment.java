@@ -1,4 +1,4 @@
-package nyc.c4q.jonathancolon.dankify.twittermeme.fragments;
+package nyc.c4q.jonathancolon.dankify.twitterclone.fragments;
 
 
 import android.content.Context;

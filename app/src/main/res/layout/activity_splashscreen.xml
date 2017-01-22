@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#008083"
-    tools:context="nyc.c4q.jonathancolon.dankify.HomeActivity">
+    tools:context="nyc.c4q.jonathancolon.dankify.desktop.activities.SplashActivity">
 
     <FrameLayout
         android:id="@+id/fragment_container"

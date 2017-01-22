@@ -9,10 +9,41 @@
         android:id="@+id/button_mydocuments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/icon_documents"
+        android:background="@drawable/icon_my_memes"
         android:clickable="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
         android:onClick="startDocuments"/>
+    <TextView
+        android:text="Meme\nApps"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:gravity="start"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="2dp"
+        android:typeface="monospace"/>
+
+    <ImageView
+        android:id="@+id/icon_meme_museum"
+        android:clickable="true"
+        android:src="@drawable/museum_drawer"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:onClick="startMuseum"
+        android:scaleType="fitCenter"
+        android:layout_height="55dp"
+        android:layout_width="55dp"/>
+
+    <TextView
+        android:text="Meme\nMuseum"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:gravity="start"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="2dp"
+        android:typeface="monospace"/>
 
     <!--TASKBAR-->
     <RelativeLayout

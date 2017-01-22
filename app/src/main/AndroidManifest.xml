@@ -5,25 +5,30 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <uses-feature android:name="android.hardware.camera2.full"/>
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_ms_launcher"
+        android:icon="@mipmap/ic_ms_studio"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity" android:noHistory="true">
+        <activity
+            android:name=".desktop.activities.SplashActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MemeMain"/>
-        <activity android:name=".twittermeme.activities.TweetActivity"/>
+        <activity android:name=".desktop.activities.DesktopActivity"/>
+        <activity android:name=".twitterclone.activities.TweetActivity"/>
         <activity android:name=".mspaintmeme.MSPaintActivity"/>
-        <activity android:name=".museum.MemeMuseum">
+        <activity android:name=".museum.activities.MemeMuseumActivity">
+        </activity>
+        <activity android:name=".MuseumDisplayActivity">
         </activity>
     </application>
 
